@@ -16,24 +16,27 @@ function NotePreview() {
     queryFn: () => fetchNoteById(id),
   });
 
+  const handleClose = () => router.back();
+
   return (
-    <Modal onClose={() => router.back()}>
+    <Modal onClose={handleClose}>
       {isLoading && <Loader />}
       {error && <ErrorMessage message="Something went wrong." />}
       {data && (
-        <div className={css.container}>
-          <div className={css.item}>
-            <div className={css.header}>
-              <h2>{data.title}</h2>
-            </div>
-            <p className={css.tag}>{data.tag}</p>
-            <p className={css.content}>{data.content}</p>
-            <p className={css.date}>
-              {new Date(data.createdAt).toLocaleString('en-US', {
-                timeZone: 'UTC',
-              })}
-            </p>
+        <div className={css.item}>
+          <div className={css.header}>
+            <h2>{data.title}</h2>
+            <button className={css.backBtn} type="button" onClick={handleClose}>
+              ← Back
+            </button>
           </div>
+          <p className={css.tag}>{data.tag}</p>
+          <p className={css.content}>{data.content}</p>
+          <p className={css.date}>
+            {new Date(data.createdAt).toLocaleString('en-US', {
+              timeZone: 'UTC',
+            })}
+          </p>
         </div>
       )}
     </Modal>
