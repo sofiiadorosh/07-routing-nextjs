@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import type { Metadata } from 'next';
 import 'modern-normalize';
 import './globals.css';
@@ -7,7 +7,7 @@ import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 
 export const metadata: Metadata = {
-  title: '06-notehub-nextjs',
+  title: '07-routing-nextjs',
   description: 'NoteHub Homework Application built with Next.js',
 };
 

@@ -16,28 +16,24 @@ function NoteDetailsClient() {
     refetchOnMount: false,
   });
 
-  if (isLoading) {
-    return <Loader />;
-  }
-
-  if (error || !data) {
-    return <ErrorMessage message="Something went wrong." />;
-  }
-
   return (
     <div className={css.container}>
-      <div className={css.item}>
-        <div className={css.header}>
-          <h2>{data.title}</h2>
+      {isLoading && <Loader />}
+      {error && <ErrorMessage message="Something went wrong." />}
+      {data && (
+        <div className={css.item}>
+          <div className={css.header}>
+            <h2>{data.title}</h2>
+          </div>
+          <p className={css.tag}>{data.tag}</p>
+          <p className={css.content}>{data.content}</p>
+          <p className={css.date}>
+            {new Date(data.createdAt).toLocaleString('en-US', {
+              timeZone: 'UTC',
+            })}
+          </p>
         </div>
-        <p className={css.tag}>{data.tag}</p>
-        <p className={css.content}>{data.content}</p>
-        <p className={css.date}>
-          {new Date(data.createdAt).toLocaleString('en-US', {
-            timeZone: 'UTC',
-          })}
-        </p>
-      </div>
+      )}
     </div>
   );
 }

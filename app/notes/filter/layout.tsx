@@ -1,10 +1,10 @@
-import { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import css from './NotesLayout.module.css';
 
-type NotesLayoutProps = {
+interface NotesLayoutProps {
   children: ReactNode;
   sidebar: ReactNode;
-};
+}
 
 function NotesLayout({ children, sidebar }: NotesLayoutProps) {
   return (

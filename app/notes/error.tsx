@@ -2,11 +2,11 @@
 
 import ErrorMessage from '@/components/ErrorMessage/ErrorMessage';
 
-type Props = {
+interface NotesErrorProps {
   error: Error;
-};
+}
 
-function NotesError({ error }: Props) {
+function NotesError({ error }: NotesErrorProps) {
   return (
     <main>
       <ErrorMessage

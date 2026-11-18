@@ -11,12 +11,16 @@ import css from './NotePreview.module.css';
 function NotePreview() {
   const router = useRouter();
   const { id } = useParams<{ id: string }>();
+
   const { data, isLoading, error } = useQuery({
     queryKey: ['note', id],
     queryFn: () => fetchNoteById(id),
+    refetchOnMount: false,
   });
 
-  const handleClose = () => router.back();
+  const handleClose = () => {
+    router.back();
+  };
 
   return (
     <Modal onClose={handleClose}>

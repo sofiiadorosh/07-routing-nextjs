@@ -16,7 +16,7 @@ import Modal from '@/components/Modal/Modal';
 import NoteForm from '@/components/NoteForm/NoteForm';
 import EmptyMessage from '@/components/EmptyMessage/EmptyMessage';
 import css from './NotesPage.module.css';
-import { NoteTag } from '@/types/note';
+import { type NoteTag } from '@/types/note';
 
 interface NotesClientProps {
   tag: NoteTag | undefined;

@@ -4,15 +4,16 @@ import {
   QueryClient,
 } from '@tanstack/react-query';
 import { fetchNoteById } from '@/lib/api';
-import NoteDetailsClient from '@/app/notes/[id]/NoteDetails.client';
+import NoteDetailsClient from './NoteDetails.client';
 import css from './NoteDetails.module.css';
 
-type NoteDetailsProps = {
+interface NoteDetailsPageProps {
   params: Promise<{ id: string }>;
-};
+}
 
-async function NoteDetails({ params }: NoteDetailsProps) {
+async function NoteDetailsPage({ params }: NoteDetailsPageProps) {
   const { id } = await params;
+
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
@@ -29,4 +30,4 @@ async function NoteDetails({ params }: NoteDetailsProps) {
   );
 }
 
-export default NoteDetails;
+export default NoteDetailsPage;

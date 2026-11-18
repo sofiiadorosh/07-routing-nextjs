@@ -1,7 +1,7 @@
 import {
+  dehydrate,
   HydrationBoundary,
   QueryClient,
-  dehydrate,
 } from '@tanstack/react-query';
 import { notFound } from 'next/navigation';
 import { fetchNotes } from '@/lib/api';
@@ -10,9 +10,9 @@ import NotesClient from './Notes.client';
 
 export const dynamic = 'force-dynamic';
 
-type NotesFilterPageProps = {
+interface NotesFilterPageProps {
   params: Promise<{ slug: string[] }>;
-};
+}
 
 async function NotesFilterPage({ params }: NotesFilterPageProps) {
   const { slug } = await params;

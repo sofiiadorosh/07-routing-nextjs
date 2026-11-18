@@ -1,8 +1,8 @@
 import { NOTE_TAGS } from '@/types/note';
-import SidebarNotes from '@/components/SidebarNotes/SidebarNotes';
+import SidebarNotes from './SidebarNotes';
 
-function NotesSidebar() {
+function SidebarDefault() {
   return <SidebarNotes tags={NOTE_TAGS} />;
 }
 
-export default NotesSidebar;
+export default SidebarDefault;
