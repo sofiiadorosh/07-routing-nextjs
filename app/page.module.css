@@ -23,3 +23,8 @@
   line-height: 28px;
   color: #444444;
 }
+
+.main {
+  flex: 1;
+  text-align: center;
+}
