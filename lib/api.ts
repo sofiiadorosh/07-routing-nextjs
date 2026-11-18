@@ -1,4 +1,4 @@
-import notehub from './axios';
+import axios from 'axios';
 import {
   type FetchNotesParams,
   type FetchNotesResponse,
@@ -7,6 +7,13 @@ import {
 } from '@/types/note';
 
 const PER_PAGE = 12;
+
+const notehub = axios.create({
+  baseURL: 'https://notehub-public.goit.study/api',
+  headers: {
+    Authorization: `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`,
+  },
+});
 
 export async function fetchNotes({
   search,
