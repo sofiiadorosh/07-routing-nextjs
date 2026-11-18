@@ -1,9 +1,10 @@
 import axios from 'axios';
-import type { Note, NewNote } from '@/types/note';
+import type { Note, NewNote, NoteTag } from '@/types/note';
 
 interface FetchNotesParams {
   search: string;
   page: number;
+  tag: NoteTag | undefined;
 }
 
 interface FetchNotesResponse {
@@ -21,9 +22,15 @@ const NOTEHUB = axios.create({
 export async function fetchNotes({
   search,
   page,
+  tag,
 }: FetchNotesParams): Promise<FetchNotesResponse> {
   const { data } = await NOTEHUB.get<FetchNotesResponse>('/notes', {
-    params: { search, page, perPage: 12 },
+    params: {
+      search,
+      page,
+      perPage: 12,
+      ...(tag && { tag }),
+    },
   });
   return data;
 }

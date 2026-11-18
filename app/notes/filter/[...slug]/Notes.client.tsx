@@ -15,17 +15,22 @@ import NoteList from '@/components/NoteList/NoteList';
 import Modal from '@/components/Modal/Modal';
 import NoteForm from '@/components/NoteForm/NoteForm';
 import EmptyMessage from '@/components/EmptyMessage/EmptyMessage';
-import css from './Notes.page.module.css';
+import css from './NotesPage.module.css';
+import { NoteTag } from '@/types/note';
 
-function NotesClient() {
+interface NotesClientProps {
+  tag: NoteTag | undefined;
+}
+
+function NotesClient({ tag }: NotesClientProps) {
   const queryClient = useQueryClient();
   const [query, setQuery] = useState('');
   const [selectedPage, setSelectedPage] = useState(1);
   const [isModalOpened, setModalOpened] = useState(false);
 
   const { data, isSuccess } = useQuery({
-    queryKey: ['notes', query, selectedPage],
-    queryFn: () => fetchNotes({ search: query, page: selectedPage }),
+    queryKey: ['notes', query, selectedPage, tag],
+    queryFn: () => fetchNotes({ search: query, page: selectedPage, tag }),
     placeholderData: keepPreviousData,
     refetchOnMount: false,
     throwOnError: true,
